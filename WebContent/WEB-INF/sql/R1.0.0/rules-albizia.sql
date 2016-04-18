@@ -106,8 +106,8 @@ ADD CONSTRAINT RolOption_To_Option FOREIGN KEY (cOption) REFERENCES tOption(cId)
 ALTER TABLE tR_UserRol
 ADD INDEX index_rol (cRol ASC),
 ADD INDEX index_user (cUser ASC),
-ADD CONSTRAINT r_UserRolToRol FOREIGN KEY (cRol) REFERENCES tRol(cId);/*,
-ADD CONSTRAINT r_RolOptionToOption FOREIGN KEY (cOption) REFERENCES tOption(cId);*/
+ADD CONSTRAINT r_UserRolToRol FOREIGN KEY (cRol) REFERENCES tRol(cId);,
+ADD CONSTRAINT r_RolOptionToOption FOREIGN KEY (cOption) REFERENCES tOption(cId);
 */
 
 /* PFM History */

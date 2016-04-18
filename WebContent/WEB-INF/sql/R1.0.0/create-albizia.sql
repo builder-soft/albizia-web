@@ -136,24 +136,26 @@ CREATE TABLE IF NOT EXISTS tProgressive (
 ) ENGINE=innoDB;
 
 
-/* Crea tabla Empleados */
+/* Modificar tabla Empleados */
+ALTER TABLE tEmployee ADD COLUMN cBirthDate DATE NULL COMMENT 'Fecha de nacimiento' AFTER cName;
+ALTER TABLE tEmployee ADD COLUMN cAddress VARCHAR(100) NULL COMMENT 'Direccion particular' AFTER cBirthDate;
+ALTER TABLE tEmployee ADD COLUMN cComuna BIGINT(20) NULL AFTER cAddress;
+ALTER TABLE tEmployee ADD COLUMN cCountry BIGINT(20) NULL COMMENT 'Nacionalidad' AFTER cComuna;
+ALTER TABLE tEmployee ADD COLUMN cGenere BIGINT(20) NULL COMMENT 'Genero Femenino o Masculino' AFTER cCountry;
+ALTER TABLE tEmployee ADD COLUMN cPhone VARCHAR(15) NULL AFTER cGenere;
+ALTER TABLE tEmployee ADD COLUMN cMaritalStatus BIGINT(20) NULL COMMENT 'Estado Civil' AFTER cPhone;
+
+/**
 create table tEmployee (
-	cId					BIGINT(20)  NOT NULL auto_increment, 
-	cRut				VARCHAR(11) NOT NULL unique,
-	cName				VARCHAR(20) NOT NULL,
-	cLastName1			VARCHAR(20) NOT NULL,
-	cLastName2			VARCHAR(20) NOT NULL,
-	cBirthDate			DATE COMMENT 'Fecha de nacimiento',
 	cAddress			VARCHAR(100) COMMENT 'Direccion particular',
 	cGenere				BIGINT(20) NOT NULL COMMENT 'Genero Femenino o Masculino',
 	cComuna				BIGINT(20) NOT NULL,
 	cCountry			BIGINT(20) NOT NULL COMMENT 'Nacionalidad',
 	cPhone				VARCHAR(10),
-	cMaritalStatus		BIGINT(20) NOT NULL COMMENT 'Estado Civil',
-	cMovil				VARCHAR(10),
-	cEmail				VARCHAR(50),
+	cMaritalStatus		BIGINT(20) NOT NULL COMMENT 'Estado Civil'
 	PRIMARY KEY (cId)
 ) ENGINE=InnoDB;
+*/
 
 create table tGenere(
 	cId 				BIGINT(20) NOT NULL auto_increment,
@@ -224,8 +226,8 @@ create table tEnterprise (
 	cId					BIGINT(20)  NOT NULL auto_increment, 
 	cRut				VARCHAR(11) NOT NULL UNIQUE,
 	cName				VARCHAR(30) NOT NULL  COMMENT 'Nombre o razon social',
-	cLegalRep			VARCHAR(50) NOT NULL  COMMENT 'Representante legal',
-	cRutLegalRep		VARCHAR(11) NOT NULL  COMMENT 'Rut del representante legal',
+	cLegalRep			VARCHAR(50) NOT NULL  COMMENT 'Nombre Representante legal',
+	cRutLegalRep		VARCHAR(11) NOT NULL  COMMENT 'Rut representante legal',
 	cCategory			VARCHAR(50)  COMMENT 'Giro o Rubro',
 	cAddress			VARCHAR(100),
 	cComuna				BIGINT(20) NOT NULL,
@@ -398,12 +400,14 @@ create table tOvertime(
 	PRIMARY KEY (cId)
 ) ENGINE=InnoDB;
 
+/*
 create table tFiscalDate(
 	cId			BIGINT(20) NOT NULL auto_increment,
 	cDate		DATE NOT NULL UNIQUE,
 	cReason		VARCHAR(50) DEFAULT '',
 	PRIMARY KEY (cId)
 ) ENGINE=InnoDB;
+*/
 
 /*
 Tabla para registrar las aucencias y las licencias de los empleados.
@@ -420,6 +424,7 @@ create table tLicense(
 ) ENGINE=InnoDB;
 */
 
+/** Esta tabla es para registrar las vacaciones del empleado */
 create table tHoliday(
 	cId				BIGINT(20) NOT NULL auto_increment,
 	cEmployee		BIGINT(20) NOT NULL COMMENT 'Identificador del empleado quien tiene las horas extras',
@@ -690,7 +695,7 @@ SELECT	a.cId AS cId,
 		f.cEndContract,
 		a.cEmployee,
 		f.cId AS cAgreement,
-		e.cLastName1,
+		e.cName,
 		d.cUF,
 		d.cUTM,
 		a.cWorkedDays,

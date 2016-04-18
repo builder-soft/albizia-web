@@ -1,0 +1,6 @@
+Cosas que hay que cambiar en la base de datos:
+- Mover la columna tPost de la tabla tEmployee, al campo cProfile la tabla tAggrement 
+que es para almacenar el perfil de la persona. Lo mismo sucede con la tabla "tProfile" y "tPost"
+- Despejar la interrogante de dejar la tabla tCostCenter, tBusinessArea o tArea. Esta última tiene el campo CCosto.
+- 
+ 
