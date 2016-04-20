@@ -450,7 +450,13 @@ CREATE TABLE tHolidayDetailType (
 	PRIMARY KEY(cId)
 ) ENGINE=InnoDB;
 
+
+ALTER TABLE tLicenseCause ADD COLUMN cKey CHAR(5) NULL AFTER cId;
+UPDATE tLicenseCause SET cKey=cId;
+ALTER TABLE tLicenseCause CHANGE COLUMN cKey cKey CHAR(5) UNIQUE NOT NULL COMMENT 'Llave irrepetiblehabran procesos que la usan';
+
 /*
+ cKey			CHAR(5) UNIQUE NOT NULL COMMENT 'Llave irrepetiblehabran procesos que la usan'
 CREATE TABLE tLicenseCause (
 	cId BIGINT UNIQUE AUTO_INCREMENT,
 	cKey			CHAR(5) UNIQUE NOT NULL COMMENT 'Llave irrepetiblehabran procesos que la usan', 

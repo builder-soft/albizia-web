@@ -12,9 +12,6 @@ SET @booleanId = LAST_INSERT_ID();
 INSERT INTO tDataType(cKey, cName) VALUES('LONG', 'Long');
 SET @longId = LAST_INSERT_ID();
 
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('FORMAT_DATE', 'Formato de Fecha', 'dd/MM/yyyy', @stringId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('FORMAT_DATETIME', 'Formado de fecha/hora', 'dd/MM/yyyy HH:mm', @stringId);
-
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('LOCALE', 'Región, afecta a formato de números(ISO-639)', 'ES', @stringId);
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('PATTERN_INTEGER', 'Formato para montos enteros', '###.###.##0', @stringId);
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('PATTERN_DECIMAL', 'Formato para montos con decimales', '###.###.##0,00###', @stringId);
@@ -22,43 +19,43 @@ INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('PATTERN_DECIMAL'
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('LICENSE', 'Código de licencia', 'EQ+Syir1ZxcbsLwA56Dqaw==', @stringId);
 
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('WRITE_MENUCONFIG', 'Deja en consola la configuracion al grabar Permisos', 'true', @booleanId);
-
+INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('EMPLOYEE_FILES', 'Ubicación de archivos de empleados (en server)', 'D:\\temp\\remcon', @stringId);
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('CSV_SEPARATOR', 'Separador de archivos csv', ';', @stringId);
 INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('RECORDS_PER_PAGE', 'Registros por p&aacute;gina', '15', @integerId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('EMPLOYEE_FILES', 'Ubicación de archivos de empleados (en server)', 'D:\\temp\\remcon', @stringId);
 
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('BASE_SALARY', 'Sueldo Base', '185000', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('OVERTIME_FACTOR', 'Factor para cálculo de horas extras', '0.0077777', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('OVERTIME_PERCENT', 'Porcentaje de gratificación de horas extras', '50', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('GRATIFICATION_FACTOR', 'Factor grtificacion x sueldos minímos', '4.75', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('LIMIT_IPS', 'Tope imponible para afiliados al IPS (ex INP) en UFs', '64.7', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('LIMIT_INSURANCE', 'Tope imponible seguro de cesantia en UF', '97.1', @doubleId);
 */
 
-/*INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('INSURANCE_FACTOR', 'Factor para cálculo de seguro de cesantía', '0.006', @doubleId);*/
+call pSaveParameter('INSURANCE_FACTOR', 'Factor para cálculo de seguro de cesantía', '0.006', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('BASE_SALARY', 'Sueldo Base', '185000', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('OVERTIME_FACTOR', 'Factor para cálculo de horas extras', '0.0077777', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('OVERTIME_PERCENT', 'Porcentaje de gratificación de horas extras', '50', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('GRATIFICATION_FACTOR', 'Factor grtificacion x sueldos minímos', '4.75', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('LIMIT_IPS', 'Tope imponible para afiliados al IPS (ex INP) en UFs', '64.7', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('LIMIT_INSURANCE', 'Tope imponible seguro de cesantia en UF', '97.1', (SELECT cId FROM tDataType WHERE cKey='Double'));
 
 call pSaveParameter('CURRENT_UF', 'Valor actual de la UF', '21031.5', (SELECT cId FROM tDataType WHERE cKey='Double'));
 
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('CURRENT_UF', 'Valor actual de la UF', '21031.5', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('LIMIT_HEALTH', 'Tope cotizacion de salud, en UF', '4.2', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('UTM', 'Valor de una UTM', '36862', @doubleId);
-INSERT INTO tParameter(cKey, cLabel, cValue, cDataType) VALUES('DAYS_FOR_YEAR', 'Días de vacaciones por año trabajado', '15', @integerId);
+call pSaveParameter('CURRENT_UF', 'Valor actual de la UF', '21031.5', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('LIMIT_HEALTH', 'Tope cotizacion de salud, en UF', '4.2', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('UTM', 'Valor de una UTM', '36862', (SELECT cId FROM tDataType WHERE cKey='Double'));
+call pSaveParameter('DAYS_FOR_YEAR', 'Días de vacaciones por año trabajado', '15', (SELECT cId FROM tDataType WHERE cKey='Integer'));
 
 INSERT INTO tFileCategory( cName ) VALUES('Curriculums');
 INSERT INTO tFileCategory( cName ) VALUES('Licencia médica');
 INSERT INTO tFileCategory( cName ) VALUES('Certificados de título');
 INSERT INTO tFileCategory( cName ) VALUES('Otros archivos');
 
-INSERT INTO tLicenseCause(cKey, cName, cFileCategory) VALUES('ENFER', 'Enfermedad', 2);
+INSERT INTO tLicenseCause(cKey, cName) VALUES('ENFER', 'Enfermedad');
 INSERT INTO tLicenseCause(cKey, cName) VALUES('ACCID', 'Accidente');
 INSERT INTO tLicenseCause(cKey, cName) VALUES('PERMI', 'Permiso');
 INSERT INTO tLicenseCause(cKey, cName) VALUES('AUSEN', 'Ausentismo');
 
-#INSERT INTO tRol(cName) VALUES('Administrador');
-#SET @rolId = LAST_INSERT_ID();
-#SELECT cId INTO @userId FROM bsframework.tUser WHERE cMail = 'admin';
-#INSERT INTO tR_UserRol(cUser, cRol) VALUES(@userId, @rolId);
-
+/*
+INSERT INTO tRol(cName) VALUES('Administrador');
+SET @rolId = LAST_INSERT_ID();
+SELECT cId INTO @userId FROM bsframework.tUser WHERE cMail = 'admin';
+INSERT INTO tR_UserRol(cUser, cRol) VALUES(@userId, @rolId);
+*/
 /*INSERT INTO tContractType (cName, cBody) VALUES('Sin Seguro', '');*/
 INSERT INTO tContractType (cKey, cName, cBody, cInsuranceFactorEmployee, cInsuranceFactorEnterprise) 
 VALUES('UND', 'Indefinido', '', 0.006, 0.024);
@@ -503,7 +500,7 @@ INSERT INTO tComuna (cName,cRegion) VALUES ('Contulmo',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Coronel',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Curanilahue',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('El Carmen',8);
-INSERT INTO tComuna (cName,cRegion) VALUES ('Florida',8,1);
+INSERT INTO tComuna (cName,cRegion) VALUES ('Florida',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Hualpen',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Hualqui',8);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Laja',8);
@@ -637,8 +634,8 @@ INSERT INTO tComuna (cName,cRegion) VALUES ('Huechuraba',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Independencia',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Isla de Maipo',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('La Cisterna',13);
-INSERT INTO tComuna (cName,cRegion) VALUES ('La Florida',13,5);
-INSERT INTO tComuna (cName,cRegion) VALUES ('La Granja',13,1);
+INSERT INTO tComuna (cName,cRegion) VALUES ('La Florida',13);
+INSERT INTO tComuna (cName,cRegion) VALUES ('La Granja',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('La Pintana',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('La Reina',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Lampa',13);
@@ -659,12 +656,12 @@ INSERT INTO tComuna (cName,cRegion) VALUES ('Penalolen',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Pirque',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Providencia',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Pudahuel',13);
-INSERT INTO tComuna (cName,cRegion) VALUES ('Puente Alto',13,153);
+INSERT INTO tComuna (cName,cRegion) VALUES ('Puente Alto',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Quilicura',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Quinta Normal',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Recoleta',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('Renca',13);
-INSERT INTO tComuna (cName,cRegion) VALUES ('San Bernardo',13,1);
+INSERT INTO tComuna (cName,cRegion) VALUES ('San Bernardo',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('San Joaquin',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('San Jose de Maipo',13);
 INSERT INTO tComuna (cName,cRegion) VALUES ('San Miguel',13);

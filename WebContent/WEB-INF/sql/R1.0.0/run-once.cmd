@@ -8,6 +8,7 @@ IF "%1" == "" GOTO error
 	for %%i in (sp-*.sql) do mysql -D%1 -t -u root -padmin --default-character-set=utf8 < %%i
 
 	mysql -D%1 -t -u root -padmin --default-character-set=utf8 < data-albizia.sql
+	mysql -D%1 -t -u root -padmin --default-character-set=utf8 < data-menu.sql
 
 goto fin
 
