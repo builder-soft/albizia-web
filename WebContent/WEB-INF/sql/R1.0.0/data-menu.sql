@@ -4,6 +4,14 @@ create procedure pUpdateData_Temp()
 begin
 	DECLARE vTemp BIGINT(20);
  
+	insert into tOption(cKey, cLabel, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('REMUNERATION', 'Remuneracion', NULL, NULL, 1, 4, true, 0);
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CONFIG';
+	update tOption SET cParent = vTemp WHERE cKey = 'REMUNERATION';
+	
+	
+	/*
 	update tOption set cEnable = false where ckey = 'CH_PASS';
 	
 	delete from toption where ckey = 'FILES';
@@ -91,7 +99,7 @@ begin
 	update tOption SET cLabel='Reporte Completo (Excel)' WHERE cKey ='REP_PLAIN';
 	update tOption SET cLabel='Reportes' WHERE cKey ='REP_LIST';
 	update tOption SET cLabel='Turnos' WHERE cKey ='TURN';
-	
+	*/
 END$$
 DELIMITER ;
 
@@ -99,15 +107,35 @@ call pUpdateData_Temp;
 
 drop procedure if exists pUpdateData_Temp;
 
+/*
 Archivos:
-
-
+	...
+	...
+	- Empresa
+		- Sucursales
+		- Centro de Costo
+		- Perfiles/Cargos
+		
+	- Generales
+		- Comunas
+		- Feriados
+		
+	
 Configuracion:
 	...
 	...
 	Remuneraciones:
-		- Periodos.
+		- Periodos (BOARD).
+		- Haberes y descuentos.
+		- Tipos de contrato
+		- Gratificaciones
+		- Indicadores
+		- Sistemas de salud
+		- AFP
+		
    
+*/
+
 
 
 /*
