@@ -1,0 +1,42 @@
+Archivos (FILES)
+	- *Empresa (ENTERPRISE)
+		- *Sucursales (BRANCH)
+		- *Centro de Costo (COST_CENTER)
+		- Areas (AREA)
+		- Perfiles/Cargos (POST)
+	- Empleados (EMPLOYEE)
+		- Datos basicos.
+		- Licencias
+		- Turnos.
+		- Marcas
+		- Desvinculados
+	- *Generales (CROSS)
+		- *Comunas  (COMUNA)
+		- Feriados (FISCAL_DATE)
+		- Permisos y licencias (LICENSE_CAUSE)
+		- Grupos (GROUP_MGR)
+	
+Configuracion (CONFIG):
+	- Seguridad (SECURITY)
+		- Usuarios (USER)
+		- Roles (ROL)
+		- Permisos de roles (ALLOW)
+	- Dominios (DOMAIN)
+		- Definición (DOMAIN_MGR)
+		- Parámetros (PARAMS)
+		- Atributos (DOMAIN_ATTR_MGR)
+	- Asistenca (ATTENDANCE)
+		- Turnos (TURN)
+		- Relojes (MACHINE)
+		- Reportes (REP_LIST)
+	- *Remuneraciones (REMUNERATION)
+		- *Periodos (PERIODS).
+		- *Haberes y descuentos (ASSET_DISCOUNT).
+		- *Tipos de contrato (CONTRACT_TYPES)
+		- *Gratificaciones (GRATIFICATION)
+		- *Indicadores (INDICATOR)
+		- *Sistemas de salud (HEALTH)
+		- *AFP (PFM)
+
+Consultas y Reportes
+	- *******
