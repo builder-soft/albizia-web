@@ -11,25 +11,65 @@ begin
 	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/branch/BranchManager', null, 1, 0, true, false);
 
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('COST_CENTER', 'Centro de costo', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/costCenter/CostCenterManager', null, 0, 1, true, false);
-	
-	
+	VALUES('COST_CENTER', 'Centro de costo', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/costCenter/CostCenterManager', null, 1, 0, true, false);
 	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('REMUNERATION', 'Remuneracion', NULL, NULL, 1, 4, true, false);
+	VALUES('REMUNERATION', 'Remuneracion', null, NULL, NULL, 1, 0, true, false);
 
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('PERIODS', 'Periodos', '/servlet/admin/period/PeriodManager', 0, 1, true, false);
+	VALUES('PERIODS', 'Periodos', 'ALBIZIA_CONTEXT', '/servlet/admin/period/PeriodManager', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('HyD_CRUD', 'Haberes y descuentos', '/servlet/config/assetDiscount/AssetDiscountManager', 0, 1, true, false);
+	VALUES('ASSET_DISCOUNT', 'Haberes y descuentos', 'ALBIZIA_CONTEXT', '/servlet/config/assetDiscount/AssetDiscountManager', null, 1, 0, true, false);
 	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('CONTRACT_TYPES', 'Tipos de contratos', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('GRATIFICATION', 'Gratificacion', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('INDICATOR', 'Indicadores', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('HEALTH', 'Sistemas de salud', 'ALBIZIA_CONTEXT', '/servlet/config/health/HealthManager', null, 1, 0, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('PFM', 'AFP', 'ALBIZIA_CONTEXT', '/servlet/config/pfm/PFMManager', null, 1, 0, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('CROSS', 'Generales', null, NULL, null, 1, 0, true, false);
+	
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'FILES';
+	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE';
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'ENTERPRISE';
+	update tOption SET cParent = vTemp WHERE cKey = 'BRANCH';
+	update tOption SET cParent = vTemp WHERE cKey = 'COST_CENTER';
+	update tOption SET cParent = vTemp WHERE cKey = 'AREA';
+	update tOption SET cParent = vTemp WHERE cKey = 'POST';
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'FILES';
+	update tOption SET cParent = vTemp WHERE cKey = 'CROSS';
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CROSS';
+	update tOption SET cParent = vTemp WHERE cKey = 'COMUNA';
+	update tOption SET cParent = vTemp WHERE cKey = 'FISCAL_DATE';
+	update tOption SET cParent = vTemp WHERE cKey = 'LICENSE_CAUSE';
+	update tOption SET cParent = vTemp WHERE cKey = 'GROUP_MGR';
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CONFIG';
 	update tOption SET cParent = vTemp WHERE cKey = 'REMUNERATION';
-	
-	
-	
+
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'REMUNERATION';
+	update tOption SET cParent = vTemp WHERE cKey = 'PERIODS';
+	update tOption SET cParent = vTemp WHERE cKey = 'ASSET_DISCOUNT';
+	update tOption SET cParent = vTemp WHERE cKey = 'CONTRACT_TYPES';
+	update tOption SET cParent = vTemp WHERE cKey = 'GRATIFICATION';
+	update tOption SET cParent = vTemp WHERE cKey = 'INDICATOR';
+	update tOption SET cParent = vTemp WHERE cKey = 'HEALTH';
+	update tOption SET cParent = vTemp WHERE cKey = 'PFM';
 	
 	
 	/*
