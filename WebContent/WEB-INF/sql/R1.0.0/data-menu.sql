@@ -4,11 +4,32 @@ create procedure pUpdateData_Temp()
 begin
 	DECLARE vTemp BIGINT(20);
  
-	insert into tOption(cKey, cLabel, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('REMUNERATION', 'Remuneracion', NULL, NULL, 1, 4, true, 0);
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('ENTERPRISE', 'Empresas', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/EnterpriseManager', null, 1, 0, true, false);
+	
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/branch/BranchManager', null, 1, 0, true, false);
+
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('COST_CENTER', 'Centro de costo', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/costCenter/CostCenterManager', null, 0, 1, true, false);
+	
+	
+	
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('REMUNERATION', 'Remuneracion', NULL, NULL, 1, 4, true, false);
+
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('PERIODS', 'Periodos', '/servlet/admin/period/PeriodManager', 0, 1, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('HyD_CRUD', 'Haberes y descuentos', '/servlet/config/assetDiscount/AssetDiscountManager', 0, 1, true, false);
+	
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CONFIG';
 	update tOption SET cParent = vTemp WHERE cKey = 'REMUNERATION';
+	
+	
+	
 	
 	
 	/*
