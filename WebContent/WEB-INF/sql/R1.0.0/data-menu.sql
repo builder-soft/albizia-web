@@ -13,8 +13,11 @@ begin
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/branch/BranchManager', null, 1, 0, true, false);
 
-	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+/*	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('COST_CENTER', 'Centro de costo', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/costCenter/CostCenterManager', null, 1, 0, true, false);
+*/
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('COST_CENTER', 'Centro de costo', 'DALEA_CONTEXT', '/servlet/config/employee/AreaManager', null, 1, 0, true, false);
 	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('REMUNERATION', 'Remuneracion', null, NULL, NULL, 1, 0, true, false);
