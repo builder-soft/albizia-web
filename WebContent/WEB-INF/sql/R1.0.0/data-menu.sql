@@ -5,7 +5,10 @@ begin
 	DECLARE vTemp BIGINT(20);
  
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('ENTERPRISE', 'Empresas', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/EnterpriseManager', null, 1, 0, true, false);
+	VALUES('ENTERPRISE', 'Empresas', null, null, null, 1, 0, true, false);
+	
+	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('ENTERPRISE_DATA', 'Datos básicos', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/EnterpriseManager', null, 1, 0, true, false);
 	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/branch/BranchManager', null, 1, 0, true, false);
@@ -45,6 +48,7 @@ begin
 	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE';
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'ENTERPRISE';
+	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE_DATA';
 	update tOption SET cParent = vTemp WHERE cKey = 'BRANCH';
 	update tOption SET cParent = vTemp WHERE cKey = 'COST_CENTER';
 	update tOption SET cParent = vTemp WHERE cKey = 'AREA';
@@ -54,10 +58,7 @@ begin
 	update tOption SET cParent = vTemp WHERE cKey = 'CROSS';
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CROSS';
-	update tOption SET cParent = vTemp WHERE cKey = 'COMUNA';
-	update tOption SET cParent = vTemp WHERE cKey = 'FISCAL_DATE';
-	update tOption SET cParent = vTemp WHERE cKey = 'LICENSE_CAUSE';
-	update tOption SET cParent = vTemp WHERE cKey = 'GROUP_MGR';
+	update tOption SET cParent = vTemp WHERE cKey IN('COMUNA','FISCAL_DATE','LICENSE_CAUSE','GROUP_MGR');
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'CONFIG';
 	update tOption SET cParent = vTemp WHERE cKey = 'REMUNERATION';
@@ -70,6 +71,35 @@ begin
 	update tOption SET cParent = vTemp WHERE cKey = 'INDICATOR';
 	update tOption SET cParent = vTemp WHERE cKey = 'HEALTH';
 	update tOption SET cParent = vTemp WHERE cKey = 'PFM';
+	
+	update tOption SET cOrder=10 WHERE cKey ='ENTERPRISE';
+	update tOption SET cOrder=20 WHERE cKey ='EMPLOYEE';
+	update tOption SET cOrder=30 WHERE cKey ='CROSS';
+	
+	update tOption SET cOrder=10 WHERE cKey ='ENTERPRISE_DATA';
+	update tOption SET cOrder=20 WHERE cKey ='BRANCH';
+	update tOption SET cOrder=30 WHERE cKey ='COST_CENTER';
+	update tOption SET cOrder=40 WHERE cKey ='AREA';
+	update tOption SET cOrder=50 WHERE cKey ='POST';
+	
+	update tOption SET cOrder=10 WHERE cKey ='COMUNA';
+	update tOption SET cOrder=20 WHERE cKey ='FISCAL_DATE';
+	update tOption SET cOrder=30 WHERE cKey ='LICENSE_CAUSE';
+	update tOption SET cOrder=40 WHERE cKey ='GROUP_MGR';
+
+	update tOption SET cOrder=10 WHERE cKey ='SECURITY';
+	update tOption SET cOrder=20 WHERE cKey ='DOMAIN';
+	update tOption SET cOrder=30 WHERE cKey ='ATTENDANCE';
+	update tOption SET cOrder=40 WHERE cKey ='REMUNERATION';
+	
+	update tOption SET cOrder=10 WHERE cKey ='PERIODS';
+	update tOption SET cOrder=20 WHERE cKey ='ASSET_DISCOUNT';
+	update tOption SET cOrder=30 WHERE cKey ='CONTRACT_TYPES';
+	update tOption SET cOrder=40 WHERE cKey ='GRATIFICATION';
+	update tOption SET cOrder=50 WHERE cKey ='INDICATOR';
+	update tOption SET cOrder=60 WHERE cKey ='HEALTH';
+	update tOption SET cOrder=70 WHERE cKey ='PFM';
+	
 	
 	
 	/*
