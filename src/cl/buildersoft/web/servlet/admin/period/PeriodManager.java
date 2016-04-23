@@ -1,9 +1,12 @@
 package cl.buildersoft.web.servlet.admin.period;
 
+import java.sql.Connection;
+
 import javax.servlet.Servlet;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
+import cl.buildersoft.framework.type.Semaphore;
 import cl.buildersoft.framework.util.crud.BSAction;
 import cl.buildersoft.framework.util.crud.BSActionType;
 import cl.buildersoft.framework.util.crud.BSHttpServletCRUD;
@@ -51,6 +54,18 @@ public class PeriodManager extends BSHttpServletCRUD implements Servlet {
 		out.setLabel(label);
 //		out.setDisabled(true);
 		return out;
+	}
+
+	@Override
+	public Semaphore setSemaphore(Connection conn, Object[] values) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected void configEventLog(BSTableConfig table, Long userId) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
