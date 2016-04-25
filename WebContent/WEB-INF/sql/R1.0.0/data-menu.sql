@@ -8,10 +8,10 @@ begin
 	VALUES('ENTERPRISE', 'Empresas', null, null, null, 1, 0, true, false);
 	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('ENTERPRISE_DATA', 'Datos básicos', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/EnterpriseManager', null, 1, 0, true, false);
+	VALUES('ENTERPRISE_DATA', 'Datos básicos', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/Enterprise', null, 1, 0, true, false);
 	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/branch/BranchManager', null, 1, 0, true, false);
+	VALUES('BRANCH', 'Sucursales', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/Branch', null, 1, 0, true, false);
 
 /*	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('COST_CENTER', 'Centro de costo', 'ALBIZIA_CONTEXT', '/servlet/config/enterprise/costCenter/CostCenterManager', null, 1, 0, true, false);
@@ -26,13 +26,13 @@ begin
 	VALUES('PERIODS', 'Periodos', 'ALBIZIA_CONTEXT', '/servlet/admin/period/PeriodManager', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('ASSET_DISCOUNT', 'Haberes y descuentos', 'ALBIZIA_CONTEXT', '/servlet/config/assetDiscount/AssetDiscountManager', null, 1, 0, true, false);
+	VALUES('ASSET_DISCOUNT', 'Haberes y descuentos', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/AssetDiscount', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('CONTRACT_TYPES', 'Tipos de contratos', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+	VALUES('CONTRACT_TYPES', 'Tipos de contratos', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/ContractType', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('GRATIFICATION', 'Gratificacion', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+	VALUES('GRATIFICATION', 'Gratificacion', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/GratificationType', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('INDICATOR', 'Indicadores', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
