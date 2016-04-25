@@ -47,7 +47,7 @@ BEGIN
 	SET @sql = 'SELECT	CONCAT(MONTH(a.cDate), \'-\', YEAR(a.cDate)) AS \'Periodo pago\', ';
 	SET @sql = CONCAT(@sql, 'a.cStartContract AS \'Inicio contrato\', ');
 	SET @sql = CONCAT(@sql, 'a.cEndContract AS \'Termino contrato\', ');
-	SET @sql = CONCAT(@sql, 'a.cLastName1 AS \'Apellido Paterno\', ');
+	SET @sql = CONCAT(@sql, 'a.cName AS \'Nombre\', ');
 	SET @sql = CONCAT(@sql, 'a.cUF AS \'U.F.\', ');
 	SET @sql = CONCAT(@sql, 'a.cUTM AS \'U.T.M.\', ');
 	SET @sql = CONCAT(@sql, 'a.cWorkedDays AS \'Días trabajado\', ');
@@ -152,170 +152,10 @@ BEGIN
 	SET @sql = CONCAT(@sql, 'LEFT JOIN	tCurrency AS j ON a.cAdditionalPFMCurrency = j.cId ');
 	SET @sql = CONCAT(@sql, 'WHERE	a.cPeriod = fGetOpenedPeriod(); ');
 	
-	/*
-	select @sql;
-	*/
-	
 	PREPARE stmt FROM @sql;
 	EXECUTE stmt;
 	DEALLOCATE PREPARE stmt;
-	
 
-/*	
-	
-	SELECT	CONCAT(MONTH(a.cDate), '-', YEAR(a.cDate)) AS 'Periodo pago',
-			a.cStartContract AS 'Inicio Contrato',
-			a.cEndContract,
-			a.cLastName1,
-			a.cUF,
-			a.cUTM,
-			a.cWorkedDays,
-			a.cPensionary,
-			a.cDaysForYear,
-			c.cName AS 'Tipo de contrato',
-			a.cMinSalary,
-			a.cSalaryRoot,
-			a.cSalaryReceived,
-			b.cName AS cGratificationType,
-			a.cLimitGratification,
-			a.cGratificationAmount,
-			a.cGratificationFactor,
-			a.cOvertime,
-			a.cOvertimeAmount,
-			a.cParticipation,
-			a.cB01 AS fGetAliasField(1,"B"),
-			a.cB02,
-			a.cB03,
-			a.cB04,
-			a.cB05,
-			a.cB06,
-			a.cB07,
-			a.cB08,
-			a.cB09,
-			a.cB10,
-			a.cExtraPay,
-			a.cTotalIncomeTaxable,
-			a.cLimitTaxableForecast,
-			a.cLimitTaxableDismissInsurance,
-			a.cLimitInsurance,
-			a.cLimitIPS,
-			a.cIncome,
-			d.cKey AS 'Tramo Familiar',
-			a.cFamilyAssignmentCount,
-			a.cFamilyAssignmentAmount,
-			a.cFamilyRetroactive,
-			a.cFeeding,
-			a.cMobilization,
-			a.cBounty,
-			e.cName AS 'Horario',
-			a.cRewardAmount,
-			a.cMonthNotification,
-			a.cIAS,
-			a.cProportionalHoliday,
-			a.cTotalIncomeNotTaxable,
-			a.cVoluntaryIndenmization,
-			f.cName AS 'A.F.P.',
-			g.cName AS 'ex-caja',
-			a.cObligatoryQuote,
-			a.cAPVAmount,
-			a.cAccount2,
-			h.cName AS 'Salud',
-			i.cName AS 'Moneda Salud',
-			a.cHealthAmount,
-			a.cHealthCLP,
-			a.cAdditionalHealth,
-			a.cHealthLegalQuote,
-			j.cName AS 'Moneda Adicional AFP',
-			a.cAdditionalPFMAmount,
-			a.cAdditionalPFMCLP,
-			a.cLimitHealth,
-			a.cHealthQuote,
-			a.cInsuranceFactorEmployee,
-			a.cInsuranceFactorEnterprise,
-			a.cUnemploymentInsuranceAmount,
-			a.cUniqueTax,
-			a.cSubtotalLawfulDiscounts,
-			a.cAdvance,
-			a.cLoanEnterprise,
-			a.cD01,
-			a.cD02,
-			a.cD03,
-			a.cD04,
-			a.cD05,
-			a.cLoanCompensationFund,
-			a.cSavingCompensationFund,
-			a.cJudicialRetention,
-			a.cSubtotalOtherDiscounts,
-			a.cTotalDiscounts,
-			a.cNetPaymentScope,
-			a.cTotalIncome,
-			a.cToPayEmployee,
-			a.cInsuranceAmountEnterprise,
-			a.cMutualFactor,
-			a.cPayToMutulEnterprise,
-			a.cFamilyAssignmentEnterprise,
-			a.cCostEnterprise,
-			a.cSimpleLoads,
-			a.cDisabilityBurdens,
-			a.cMaternalLoads,
-			a.cSimpleAdjustment 
-	FROM	vBook AS a
-	LEFT JOIN	tGratificationType AS b ON a.cGratificationType = b.cId 
-	LEFT JOIN	tContractType AS c ON a.cContractType = c.cId
-	LEFT JOIN	tFamilyAssignmentStretch AS d ON a.cFamilyAssignmentStretch = d.cId
-	LEFT JOIN	tHorary AS e ON a.cHorary = e.cId
-	LEFT JOIN	tPFMHistory AS f ON a.cPFMHistory = f.cId
-	LEFT JOIN	tExBoxSystem AS g ON a.cExBoxSystem = g.cId
-	LEFT JOIN 	tHealthHistory AS h ON a.cHealthHistory = h.cId
-	LEFT JOIN	tCurrency AS i ON a.cHealthCurrency = i.cId
-	LEFT JOIN	tCurrency AS j ON a.cAdditionalPFMCurrency = j.cId
-	WHERE	a.cPeriod = fGetOpenedPeriod();
-	*/
-	
-	
-	
-/**
-	DECLARE vIndex INTEGER;
-	DECLARE vId BIGINT;
-	DECLARE vDone BOOLEAN DEFAULT FALSE;
-	DECLARE cursorAssetDiscount CURSOR FOR
-		SELECT	cId
-		FROM	tAssetDiscount	
-		WHERE	cEnable=true;
-	DECLARE CONTINUE HANDLER FOR NOT FOUND SET vDone = TRUE;
-	
-	SET @BookSQL = CONCAT(	'CREATE TEMPORARY TABLE temp (',
-							'cId BIGINT(20) NOT NULL auto_increment, ',
-							'cBook BIGINT(20) NOT NULL, ');
-							
-	OPEN cursorAssetDiscount;
-	assetDiscount_loop : LOOP
-		FETCH cursorAssetDiscount INTO vId;
-		IF(vDone) THEN 
-			LEAVE assetDiscount_loop;
-		END IF;
-
-		
-		SET @BookSQL = CONCAT(@BookSQL, 'c', vId, ' DOUBLE NOT NULL DEFAULT ', "'0', ");
-		
-	END LOOP assetDiscount_loop;
-	CLOSE cursorAssetDiscount;
-	
-	SET @BookSQL = CONCAT(@BookSQL,
-						'PRIMARY KEY (cId)',
-						') ENGINE=InnoDB');
-	
- 
-	select @BookSQL ;
-							
-	PREPARE stmt1 FROM @BookSQL;
-	EXECUTE stmt1;
-	DEALLOCATE PREPARE stmt1;
-	
-	insert into temp (cBook) values(1);
-	
-	select * from temp;
-*/
 END$$
 
 

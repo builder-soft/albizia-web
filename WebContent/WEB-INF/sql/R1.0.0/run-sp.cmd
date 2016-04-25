@@ -1,8 +1,9 @@
+@echo off
 IF "%1" == "" GOTO error
-	for %%i in (fn-*.sql) do mysql -D%1 -u root -t -padmin --default-character-set=utf8 < %%i
-	for %%i in (sp-*.sql) do mysql -D%1 -u root -t -padmin --default-character-set=utf8 < %%i
+	for %%i in (fn-*.sql) do mysql -D%1 -u root -t --default-character-set=utf8 < %%i
+	for %%i in (sp-*.sql) do mysql -D%1 -u root -t --default-character-set=utf8 < %%i
 	
-	mysql -D%1 -u root -t -padmin --default-character-set=utf8 < testSP.sql
+	mysql -D%1 -u root -t --default-character-set=utf8 < testSP.sql
 
 	goto fin
 

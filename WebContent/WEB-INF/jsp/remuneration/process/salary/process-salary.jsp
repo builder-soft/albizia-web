@@ -58,7 +58,9 @@
 </script>
 
 <div id="divScroll" style="overflow: auto; position: relative;">
+
 	<%=BSWeb.showResultSet(conn, book)%>
+	
 </div>
 <%
 new BSmySQL().closeConnection(conn);
