@@ -2,7 +2,6 @@ package cl.buildersoft.web.servlet.admin.period;
 
 import java.sql.Connection;
 
-import javax.servlet.Servlet;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +12,7 @@ import cl.buildersoft.framework.util.crud.BSHttpServletCRUD;
 import cl.buildersoft.framework.util.crud.BSTableConfig;
 
 @WebServlet("/servlet/admin/period/PeriodManager")
-public class PeriodManager extends BSHttpServletCRUD implements Servlet {
+public class PeriodManager extends BSHttpServletCRUD {
 	private static final long serialVersionUID = -5347446304866453415L;
 
 	@Override
@@ -22,14 +21,17 @@ public class PeriodManager extends BSHttpServletCRUD implements Servlet {
 		table.setTitle("Períodos");
 
 		table.setSortField("cDate");
-		
+
 		table.removeAction("INSERT");
 		table.removeAction("DELETE");
-		table.getAction("EDIT").setUrl("/servlet/admin/period/UpdatePeriod");
-		table.addAction(newAction("DUPLICATE", "Duplicar", "/servlet/admin/period/ReadPeriod"));
 
-		table.addAction(newAction("OPEN", "Abrir", "/servlet/admin/period/OpenPeriod"));
-		table.addAction(newAction("CLOSE", "Cerrar", "/servlet/admin/period/ClosePeriod"));
+		// table.getAction("EDIT").setUrl("/servlet/admin/period/UpdatePeriod");
+		// table.addAction(newAction("DUPLICATE", "Duplicar",
+		// "/servlet/admin/period/ReadPeriod"));
+		// table.addAction(newAction("OPEN", "Abrir",
+		// "/servlet/admin/period/OpenPeriod"));
+		// table.addAction(newAction("CLOSE", "Cerrar",
+		// "/servlet/admin/period/ClosePeriod"));
 
 		table.getField("cDate").setLabel("Fecha período");
 		table.getField("cPeriodStatus").setLabel("Estado");
@@ -43,7 +45,6 @@ public class PeriodManager extends BSHttpServletCRUD implements Servlet {
 		table.getField("cLimitHealth").setLabel("Tope salud");
 		table.getField("cUTM").setLabel("U.T.M.");
 		table.getField("cDaysForYear").setLabel("Días de vacaciones por año");
-		
 
 		return table;
 	}
@@ -52,7 +53,7 @@ public class PeriodManager extends BSHttpServletCRUD implements Servlet {
 		BSAction out = new BSAction(key, BSActionType.Record);
 		out.setUrl(url);
 		out.setLabel(label);
-//		out.setDisabled(true);
+		// out.setDisabled(true);
 		return out;
 	}
 
@@ -65,7 +66,7 @@ public class PeriodManager extends BSHttpServletCRUD implements Servlet {
 	@Override
 	protected void configEventLog(BSTableConfig table, Long userId) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

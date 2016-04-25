@@ -40,3 +40,7 @@ Configuracion (CONFIG):
 
 Consultas y Reportes
 	- *******
+	
+Procesos
+	- Calculo Remuneraciones
+	

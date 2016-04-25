@@ -1,18 +1,18 @@
 echo -- 1.0.0 --
 IF "%1" == "" GOTO error
-echo runing create-albizia.sql...
+echo Runing create-albizia.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < create-albizia.sql
-echo runing rules-albizia.sql
+echo Runing rules-albizia.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < rules-albizia.sql
 
 	for %%i in (fn-*.sql) do mysql -D%1 -t -u root --default-character-set=utf8 < %%i
 	for %%i in (sp-*.sql) do mysql -D%1 -t -u root --default-character-set=utf8 < %%i
 
-echo runing data-albizia.sql
+echo Runing data-albizia.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < data-albizia.sql
-echo runing data-menu.sql
+echo Runing data-menu.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < data-menu.sql
-echo runing update-database.sql
+echo Runing update-database.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < update-database.sql
 
 goto fin

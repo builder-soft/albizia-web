@@ -46,16 +46,18 @@ begin
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('CROSS', 'Generales', null, NULL, null, 1, 0, true, false);
 	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('PROCESS', 'Procesos', null, NULL, null, 1, 0, true, false);
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('SALARY', 'Calculo Salario', 'ALBIZIA_CONTEXT', '/servlet/remuneration/process/salary/ProcessSalary', null, 1, 0, true, false);
+	
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'FILES';
 	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE';
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'ENTERPRISE';
-	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE_DATA';
-	update tOption SET cParent = vTemp WHERE cKey = 'BRANCH';
-	update tOption SET cParent = vTemp WHERE cKey = 'COST_CENTER';
-	update tOption SET cParent = vTemp WHERE cKey = 'AREA';
-	update tOption SET cParent = vTemp WHERE cKey = 'POST';
+	update tOption SET cParent = vTemp WHERE cKey IN ('ENTERPRISE_DATA', 'BRANCH', 'COST_CENTER', 'AREA', 'POST');
 	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'FILES';
 	update tOption SET cParent = vTemp WHERE cKey = 'CROSS';
@@ -67,13 +69,11 @@ begin
 	update tOption SET cParent = vTemp WHERE cKey = 'REMUNERATION';
 
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'REMUNERATION';
-	update tOption SET cParent = vTemp WHERE cKey = 'PERIODS';
-	update tOption SET cParent = vTemp WHERE cKey = 'ASSET_DISCOUNT';
-	update tOption SET cParent = vTemp WHERE cKey = 'CONTRACT_TYPES';
-	update tOption SET cParent = vTemp WHERE cKey = 'GRATIFICATION';
-	update tOption SET cParent = vTemp WHERE cKey = 'INDICATOR';
-	update tOption SET cParent = vTemp WHERE cKey = 'HEALTH';
-	update tOption SET cParent = vTemp WHERE cKey = 'PFM';
+	update tOption SET cParent = vTemp WHERE cKey IN ('PERIODS', 'ASSET_DISCOUNT', 'CONTRACT_TYPES', 'GRATIFICATION', 'INDICATOR', 'HEALTH', 'PFM');
+
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'PROCESS';
+	update tOption SET cParent = vTemp WHERE cKey = 'SALARY';
+	
 	
 	update tOption SET cOrder=10 WHERE cKey ='ENTERPRISE';
 	update tOption SET cOrder=20 WHERE cKey ='EMPLOYEE';
@@ -102,8 +102,15 @@ begin
 	update tOption SET cOrder=50 WHERE cKey ='INDICATOR';
 	update tOption SET cOrder=60 WHERE cKey ='HEALTH';
 	update tOption SET cOrder=70 WHERE cKey ='PFM';
+
+	update tOption SET cOrder=10 WHERE cKey ='FILES';
+	update tOption SET cOrder=20 WHERE cKey ='CONFIG';
+	update tOption SET cOrder=30 WHERE cKey ='REPORT';
+	update tOption SET cOrder=40 WHERE cKey ='PROCESS';
 	
 	
+	
+	update tOption SET cLabel='Colaboradores' WHERE cKey ='EMPLOYEE';
 	
 	/*
 	update tOption set cEnable = false where ckey = 'CH_PASS';

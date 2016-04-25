@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.config.enterprise.banch;
+package cl.buildersoft.web.servlet.albizia.manager.banch;
 
 import java.sql.Connection;
 
@@ -9,7 +9,7 @@ import cl.buildersoft.framework.type.Semaphore;
 import cl.buildersoft.framework.util.crud.BSHttpServletCRUD;
 import cl.buildersoft.framework.util.crud.BSTableConfig;
 
-@WebServlet("/servlet/config/enterprise/branch/BranchManager")
+@WebServlet("/servlet/albizia/manager/Branch")
 public class BranchManager extends BSHttpServletCRUD {
 	private static final long serialVersionUID = -2048068668878392177L;
 

@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.config.enterprise;
+package cl.buildersoft.web.servlet.albizia.manager.enterprise;
 
 import java.sql.Connection;
 import java.util.logging.Logger;
@@ -13,7 +13,7 @@ import cl.buildersoft.framework.util.crud.BSTableConfig;
 /**
  * Servlet implementation class EmployeeManager
  */
-@WebServlet("/servlet/config/enterprise/EnterpriseManager")
+@WebServlet("/servlet/albizia/manager/Enterprise")
 public class EnterpriseManager extends BSHttpServletCRUD {
 	private static final Logger LOG = Logger.getLogger(EnterpriseManager.class.getName());
 	private static final long serialVersionUID = -460775898391545834L;
