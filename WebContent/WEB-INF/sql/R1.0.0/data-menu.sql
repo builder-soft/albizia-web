@@ -52,7 +52,6 @@ begin
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('SALARY', 'Calculo Salario', 'ALBIZIA_CONTEXT', '/servlet/remuneration/process/salary/ProcessSalary', null, 1, 0, true, false);
 	
-	
 	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'FILES';
 	update tOption SET cParent = vTemp WHERE cKey = 'ENTERPRISE';
 	
@@ -108,9 +107,20 @@ begin
 	update tOption SET cOrder=30 WHERE cKey ='REPORT';
 	update tOption SET cOrder=40 WHERE cKey ='PROCESS';
 	
-	
-	
 	update tOption SET cLabel='Colaboradores' WHERE cKey ='EMPLOYEE';
+	
+	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
+	VALUES('AGREEMENT', 'Contratos', 'ALBIZIA_CONTEXT', '/servlet/config/employee/EmployeeAgreementManager', null, 1, 0, true, false);
+	
+	SELECT cID INTO vTemp FROM tOption WHERE cKey = 'EMPLOYEE';
+	update tOption SET cParent = vTemp WHERE cKey = 'AGREEMENT';
+	
+	update tOption SET cOrder=10 WHERE cKey ='EMPLOYEE_DATA';
+	update tOption SET cOrder=20 WHERE cKey ='EMPLOYEE_LICENSE';
+	update tOption SET cOrder=30 WHERE cKey ='EMPLOYEE_TURN';
+	update tOption SET cOrder=40 WHERE cKey ='EMPLOYEE_MARK';
+	update tOption SET cOrder=50 WHERE cKey ='AGREEMENT';
+	update tOption SET cOrder=60 WHERE cKey ='EMPLOYEE_DETACHED';
 	
 	/*
 	update tOption set cEnable = false where ckey = 'CH_PASS';

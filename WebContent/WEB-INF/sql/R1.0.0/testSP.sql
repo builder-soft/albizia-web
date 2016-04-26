@@ -1,2 +1,2 @@
-call pListBook();
-call pCalculateAllSalary();
+#call pListBook();
+call pCalculateSalary(729,1);

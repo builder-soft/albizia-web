@@ -36,11 +36,10 @@ begin
 		INSERT INTO tProfile(cName, cCostCenter, cCompanyCost) VALUES('Informatico', @cc, 500000);
 	END IF;
 
-	/*
 	select cId into @employeeId from tEmployee where cRut='10809246-7';
 	IF (NOT EXISTS(select cId from tEmployee where cRut='10809246-7')) THEN
-		INSERT INTO tEmployee(cRut,		cName,		cBirthDate,		cAddress,						cGenere,	cComuna,	cCountry,	cMaritalStatus,	cPhone ) 
-		VALUES(			'10809246-7',	'Patricio',	'1966-08-28',	'Fray Camilo Henriquez 2063',	2,			3,			1,			@single,		'');
+		INSERT INTO tEmployee(	cKey, 			cRut,			cName,				cBirthDate,		cAddress,						cGenere,	cComuna,	cCountry,	cMaritalStatus,	cPhone, cGroup ) 
+		VALUES(					'10809246-7',	'10809246-7',	'Patricio Aranguiz','1966-08-28',	'Fray Camilo Henriquez 2063',	2,			3,			1,			@single,		'', 	1);
 		SET @employeeId = LAST_INSERT_ID();
 	END IF;
 
@@ -50,6 +49,7 @@ begin
 		SET @agreementId = LAST_INSERT_ID();
 	END IF;
 
+/*
 	select cId into @employeeId from tEmployee where cRut='12870668-2';
 	IF (NOT EXISTS(select cId from tEmployee where cRut='12870668-2')) THEN
 		INSERT INTO tEmployee(cRut,		cName,		cLastName1,	cLastName2,	cBirthDate,		cAddress,	cGenere,	cComuna,	cCountry,	cMaritalStatus,	cPhone, cMovil, cEmail) 
