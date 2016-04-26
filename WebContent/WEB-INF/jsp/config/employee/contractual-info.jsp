@@ -1,10 +1,10 @@
+<%@page import="cl.buildersoft.albizia.business.service.impl.AgreementServiceImpl"%>
+<%@page import="cl.buildersoft.albizia.business.service.AgreementService"%>
 <%@page import="cl.buildersoft.framework.util.BSDateTimeUtil"%>
 <%@page import="cl.buildersoft.albizia.business.beans.Horary"%>
 <%@page import="cl.buildersoft.albizia.business.beans.GratificationType"%>
 <%@page import="cl.buildersoft.timectrl.business.beans.Profile"%>
 <%@page import="cl.buildersoft.albizia.business.beans.ContractType"%>
-<%@page import="cl.buildersoft.business.service.impl.AgreementServiceImpl"%>
-<%@page import="cl.buildersoft.business.service.AgreementService"%>
 <%@page import="cl.buildersoft.framework.database.BSmySQL"%>
 <%@page import="cl.buildersoft.albizia.business.beans.Agreement"%>
 <%@page import="cl.buildersoft.timectrl.business.beans.Employee"%>

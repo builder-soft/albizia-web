@@ -1,4 +1,4 @@
-package cl.buildersoft.business.service;
+package cl.buildersoft.albizia.business.service;
 
 import java.sql.Connection;
 import java.util.Calendar;

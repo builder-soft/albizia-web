@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.admin.period;
+package cl.buildersoft.albizia.web.servlet.manager.period;
 
 import java.sql.Connection;
 

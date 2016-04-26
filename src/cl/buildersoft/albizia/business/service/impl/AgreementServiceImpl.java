@@ -1,4 +1,4 @@
-package cl.buildersoft.business.service.impl;
+package cl.buildersoft.albizia.business.service.impl;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import cl.buildersoft.albizia.business.beans.GratificationType;
 import cl.buildersoft.albizia.business.beans.Health;
 import cl.buildersoft.albizia.business.beans.Horary;
 import cl.buildersoft.albizia.business.beans.PaymentType;
-import cl.buildersoft.business.service.AgreementService;
+import cl.buildersoft.albizia.business.service.AgreementService;
 import cl.buildersoft.framework.database.BSBeanUtils;
 import cl.buildersoft.framework.database.BSBeanUtilsSP;
 import cl.buildersoft.framework.database.BSmySQL;

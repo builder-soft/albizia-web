@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.albizia.manager.assetDiscount;
+package cl.buildersoft.albizia.web.servlet.manager.assetDiscount;
 
 import java.sql.Connection;
 
