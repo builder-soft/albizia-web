@@ -21,6 +21,7 @@
 <form
 	action="${pageContext.request.contextPath}/servlet/remuneration/process/salary/CalculateSalary"
 	method="post">
+	
 	<table>
 		<tr>
 			<td class='cLabel'>Período:</td>
@@ -33,8 +34,8 @@
 </tr>
 -->
 	</table>
-	<button type="submit">Calcular</button>
-	<button type="button" onclick="javascript:$('#downloadAsFile').submit();">Descargar como archivo</button>
+	<button class="btn btn-primary" type="submit">Calcular</button>
+	<button class="btn disabled" type="button" onclick="javascript:$('#downloadAsFile').submit();">Descargar como archivo</button>
 
 </form>
 
@@ -47,20 +48,23 @@
 <script type="text/javascript">
 <!--
 	function onLoadPage() {
+/*	
 		document.getElementById("divScroll").style.height = (screen.availHeight - 350)
 				+ "px";
 		document.getElementById("divScroll").style.width = (screen.availWidth - 50)
 				+ "px";
+*/
 		//	$("#divScroll").fadeIn(speed);
 
 	}
 //-->
 </script>
 
-<div id="divScroll" style="overflow: auto; position: relative;">
-
+	<div class="row">
+<div id="col-sm-12" style="overflow: auto; position: relative;">
 	<%=BSWeb.showResultSet(conn, book)%>
 	
+</div>
 </div>
 <%
 new BSmySQL().closeConnection(conn);

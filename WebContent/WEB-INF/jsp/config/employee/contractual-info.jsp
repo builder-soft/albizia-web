@@ -41,8 +41,8 @@
 	
 </script>
 <br>
-<form id="frmContractualInfo"
-	action="${pageContext.request.contextPath}/servlet/config/employee/SaveContractualInfo">
+<form id="frmContractualInfo" method="post"
+	action="${applicationScope['ALBIZIA_CONTEXT']}/servlet/config/employee/SaveContractualInfo">
 	<input type="hidden" name="cId" value="<%=employee.getId()%>">
 
 	<table border="0">
@@ -132,7 +132,7 @@
 	<br>
 	<button type="button" onclick="javascript:validateAndSubmit()">Aceptar</button>
 	&nbsp;&nbsp;<a class="cCancel"
-		href="${pageContext.request.contextPath}/servlet/config/employee/EmployeeManager">Cancelar</a>
+		href="${applicationScope['ALBIZIA_CONTEXT']}/servlet/config/employee/EmployeeAgreementManager">Cancelar</a>
 </form>
 <span id="ErrorMessage" class="cError"></span>
 <%@ include file="/WEB-INF/jsp/common/footer2.jsp"%>
