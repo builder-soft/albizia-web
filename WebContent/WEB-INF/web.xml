@@ -5,18 +5,22 @@
     <param-name>CurrentContext</param-name>
     <param-value>ALBIZIA_CONTEXT</param-value>
   </context-param>
+  
   <error-page>
     <error-code>404</error-code>
     <location>/404.html</location>
   </error-page>
+  
   <welcome-file-list>
     <welcome-file>jsp/login/start.jsp</welcome-file>
   </welcome-file-list>
+  
   <servlet>
     <servlet-name>StartupServlet</servlet-name>
     <servlet-class>cl.buildersoft.framework.web.servlet.StartupServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
+    <load-on-startup>3</load-on-startup>
   </servlet>
+  
   <filter>
     <filter-name>RestoreSessionFilter</filter-name>
     <filter-class>cl.buildersoft.framework.web.filter.RestoreSessionFilter</filter-class>

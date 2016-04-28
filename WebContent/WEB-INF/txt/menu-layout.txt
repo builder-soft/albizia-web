@@ -6,6 +6,7 @@ Archivos (FILES)
 		- Perfiles/Cargos (POST)
 	- Empleados (EMPLOYEE)
 		- Datos basicos.
+		- Contratos
 		- Licencias
 		- Turnos.
 		- Marcas

@@ -4,6 +4,10 @@ create procedure pUpdateData_Temp()
 begin
 	DECLARE vTemp BIGINT(20);
  
+	IF (NOT EXISTS(select cId from bsframework.tConfig where cKey='ALBIZIA_CONTEXT')) THEN
+		INSERT INTO bsframework.tConfig(cKey, cValue) VALUES('ALBIZIA_CONTEXT', '/albizia-web');
+	END IF;
+	
 	insert into tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('ENTERPRISE', 'Empresas', null, null, null, 1, 0, true, false);
 	
@@ -116,10 +120,10 @@ begin
 	update tOption SET cParent = vTemp WHERE cKey = 'AGREEMENT';
 	
 	update tOption SET cOrder=10 WHERE cKey ='EMPLOYEE_DATA';
-	update tOption SET cOrder=20 WHERE cKey ='EMPLOYEE_LICENSE';
-	update tOption SET cOrder=30 WHERE cKey ='EMPLOYEE_TURN';
-	update tOption SET cOrder=40 WHERE cKey ='EMPLOYEE_MARK';
-	update tOption SET cOrder=50 WHERE cKey ='AGREEMENT';
+	update tOption SET cOrder=20 WHERE cKey ='AGREEMENT';
+	update tOption SET cOrder=30 WHERE cKey ='EMPLOYEE_LICENSE';
+	update tOption SET cOrder=40 WHERE cKey ='EMPLOYEE_TURN';
+	update tOption SET cOrder=50 WHERE cKey ='EMPLOYEE_MARK';
 	update tOption SET cOrder=60 WHERE cKey ='EMPLOYEE_DETACHED';
 	
 	/*
