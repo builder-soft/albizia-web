@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.config.employee;
+package cl.buildersoft.albizia.web.servlet.manager.employeeAgreement;
 
 import java.sql.Connection;
 import java.util.logging.Level;

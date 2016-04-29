@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.albizia.process.salary;
+package cl.buildersoft.albizia.web.servlet.process;
 
 import java.io.IOException;
 import java.sql.Connection;

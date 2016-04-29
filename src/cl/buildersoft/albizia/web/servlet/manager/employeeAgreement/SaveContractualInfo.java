@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.config.employee;
+package cl.buildersoft.albizia.web.servlet.manager.employeeAgreement;
 
 import java.io.IOException;
 import java.sql.Connection;

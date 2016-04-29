@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.albizia.manager.banch;
+package cl.buildersoft.albizia.web.servlet.manager.banch;
 
 import java.sql.Connection;
 

@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.albizia.manager.enterprise;
+package cl.buildersoft.albizia.web.servlet.manager.enterprise;
 
 import java.sql.Connection;
 import java.util.logging.Logger;

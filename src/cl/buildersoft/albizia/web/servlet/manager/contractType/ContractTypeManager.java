@@ -1,4 +1,4 @@
-package cl.buildersoft.web.servlet.albizia.manager.gratificationType;
+package cl.buildersoft.albizia.web.servlet.manager.contractType;
 
 import java.sql.Connection;
 
@@ -12,17 +12,17 @@ import cl.buildersoft.framework.util.crud.BSTableConfig;
 /**
  * Servlet implementation class ContractTypeManager
  */
-@WebServlet("/servlet/albizia/manager/GratificationType")
-public class GratificationTypeManager extends BSHttpServletCRUD {
-	private static final long serialVersionUID = -1230897600105567518L;
+@WebServlet("/servlet/albizia/manager/ContractType")
+public class ContractTypeManager extends BSHttpServletCRUD {
+	private static final long serialVersionUID = -883759480200742225L;
 
-	public GratificationTypeManager() {
+	public ContractTypeManager() {
 		super();
 	}
 
 	@Override
 	protected BSTableConfig getBSTableConfig(HttpServletRequest request) {
-		BSTableConfig table = initTable(request, "tGratificationType");
+		BSTableConfig table = initTable(request, "tContractType");
 		return table;
 	}
 
