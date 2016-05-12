@@ -39,7 +39,7 @@ begin
 	VALUES('GRATIFICATION', 'Gratificacion', 'ALBIZIA_CONTEXT', '/servlet/albizia/manager/GratificationType', null, 1, 0, true, false);
 	
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
-	VALUES('INDICATOR', 'Indicadores', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
+	VALUES('INDICATOR', 'Indicadores*', 'ALBIZIA_CONTEXT', null, null, 1, 0, true, false);
 
 	INSERT INTO tOption(cKey, cLabel, cContext, cURL, cParent, cType, cOrder, cEnable, cIsAdmin) 
 	VALUES('HEALTH', 'Sistemas de salud', 'ALBIZIA_CONTEXT', '/servlet/config/health/HealthManager', null, 1, 0, true, false);
@@ -126,7 +126,11 @@ begin
 	update tOption SET cOrder=50 WHERE cKey ='EMPLOYEE_MARK';
 	update tOption SET cOrder=60 WHERE cKey ='EMPLOYEE_DETACHED';
 	
-	update tOption SET cContext='TIMECTRL_CONTEXT' WHERE cKey='ATTENDANCE';
+	update tOption SET cContext=NULL WHERE cKey IN('EMPLOYEE_DATA', 'EMPLOYEE');
+	update tOption SET cContext='TIMECTRL_CONTEXT' WHERE cKey IN('REPORT');
+	update tOption SET cContext='DALEA_CONTEXT' WHERE cKey IN('EMPLOYEE_DETACHED', 'FISCAL_DATE', 'EMPLOYEE_LICENSE', 'EMPLOYEE', 'SECURITY');
+	update tOption SET cContext='ALBIZIA_CONTEXT' WHERE cKey IN('ATTENDANCE', 'REMUNERATION');
+	
 	
 END$$
 DELIMITER ;
