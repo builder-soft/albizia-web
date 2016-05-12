@@ -1,3 +1,4 @@
+@echo off
 echo -- 1.0.0 --
 IF "%1" == "" GOTO error
 echo Running create-albizia.sql...
