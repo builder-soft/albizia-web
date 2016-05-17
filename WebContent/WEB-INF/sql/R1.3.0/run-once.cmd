@@ -1,5 +1,5 @@
 @echo off
-echo -- 1.0.0 --
+echo -- 1.3.0 --
 IF "%1" == "" GOTO error
 echo Running create-albizia.sql...
 	mysql -D%1 -t -u root --default-character-set=utf8 < create-albizia.sql
