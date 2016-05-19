@@ -23,7 +23,6 @@ begin
 		END IF;	
 
 #		select vId;
-		
 
 		INSERT INTO bsframework.tDomainAttribute(cDomain, cKey, cName, cValue) VALUES(vId, 'TIMECTRL', 'TIMECTRL', 'true');
 		INSERT INTO bsframework.tDomainAttribute(cDomain, cKey, cName, cValue) VALUES(vId, 'DALEA', 'DALEA', 'true');
@@ -49,6 +48,6 @@ DELIMITER ;
 
 call pUpdateData_Temp;
 drop procedure if exists pUpdateData_Temp;
- 
 
 UPDATE tVersion SET cVersion='1.3.0', cUpdated=NOW() WHERE cKey = 'DBT';
+

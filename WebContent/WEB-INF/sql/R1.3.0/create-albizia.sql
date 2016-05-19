@@ -18,6 +18,12 @@ C:\archivos\	-> Configuracion
            	 \128706682-12345678901234567890.png -> Foto carnet del empleado 12870668-2
 
 */
+
+#ALTER TABLE tFileContent DROP FOREIGN KEY FileContentToFile;
+
+drop table IF EXISTS tFileContent;
+drop table IF EXISTS tFile;
+drop table IF EXISTS tFileCategory;
 CREATE TABLE IF NOT EXISTS tFile (
 	cId				BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	cEmployee		BIGINT NOT NULL,
