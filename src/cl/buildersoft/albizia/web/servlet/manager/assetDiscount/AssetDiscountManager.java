@@ -9,7 +9,6 @@ import cl.buildersoft.framework.type.Semaphore;
 import cl.buildersoft.framework.util.crud.BSHttpServletCRUD;
 import cl.buildersoft.framework.util.crud.BSTableConfig;
 
- 
 @WebServlet("/servlet/albizia/manager/AssetDiscount")
 public class AssetDiscountManager extends BSHttpServletCRUD {
 	private static final long serialVersionUID = -7130205551180841782L;
@@ -17,11 +16,11 @@ public class AssetDiscountManager extends BSHttpServletCRUD {
 	@Override
 	protected BSTableConfig getBSTableConfig(HttpServletRequest request) {
 		BSTableConfig table = super.initTable(request, "tAssetDiscount");
-		
+
 		table.removeAction("DELETE");
 		table.removeAction("INSERT");
 		table.setTitle("Tabla de haberes y descuentos");
-		
+
 		return table;
 	}
 
@@ -34,7 +33,19 @@ public class AssetDiscountManager extends BSHttpServletCRUD {
 	@Override
 	protected void configEventLog(BSTableConfig table, Long userId) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
+	@Override
+	protected void preExecuteAction(BSTableConfig table, String action, Long userId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void postExecuteAction(BSTableConfig table, String action, Long userId) {
+		// TODO Auto-generated method stub
+
+	}
+
 }

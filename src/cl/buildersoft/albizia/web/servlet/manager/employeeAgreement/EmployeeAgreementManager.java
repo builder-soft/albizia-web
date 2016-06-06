@@ -41,7 +41,8 @@ public class EmployeeAgreementManager extends BSHttpServletCRUD {
 		table.getField("cUsername").setLabel("Nombre Usuario");
 		table.getField("cMail").setLabel("Correo electrónico");
 
-		this.hideFields(table, "cMail", "cArea", "cPrivilege", "cBirthDate", "cAddress", "cComuna", "cCountry", "cGenere", "cPhone", "cMaritalStatus");
+		this.hideFields(table, "cMail", "cArea", "cPrivilege", "cBirthDate", "cAddress", "cComuna", "cCountry", "cGenere",
+				"cPhone", "cMaritalStatus");
 		table.removeField("cEnabled");
 
 		table.setWhere("cEnabled=TRUE");
@@ -49,11 +50,10 @@ public class EmployeeAgreementManager extends BSHttpServletCRUD {
 		table.removeAction("EDIT");
 		table.removeAction("DELETE");
 
-		
 		BSAction informationPrevitional = new BSAction("PREVITIONAL", BSActionType.Record);
 		informationPrevitional.setLabel("Información Previsional");
 		informationPrevitional.setUrl("/servlet/config/employee/InformationPrevitional");
-//		table.addAction(informationPrevitional);
+		// table.addAction(informationPrevitional);
 
 		BSAction contractualInfo = new BSAction("CONTRACTUAL", BSActionType.Record);
 		contractualInfo.setLabel("Información Contractual");
@@ -64,15 +64,14 @@ public class EmployeeAgreementManager extends BSHttpServletCRUD {
 		BSAction payMode = new BSAction("PAY_MODE", BSActionType.Record);
 		payMode.setLabel("Forma de Pago");
 		payMode.setUrl("/servlet/config/employee/PayMode");
-//		table.addAction(payMode);
+		// table.addAction(payMode);
 
 		BSAction document = new BSAction("DOCUMENTS", BSActionType.Record);
 		document.setLabel("Documentos");
 		document.setUrl("/servlet/config/employee/DocumentEmployee");
 		document.setMethod("listDocuments");
-//		table.addAction(document);
-		
-		
+		// table.addAction(document);
+
 		return table;
 	}
 
@@ -111,6 +110,18 @@ public class EmployeeAgreementManager extends BSHttpServletCRUD {
 
 	@Override
 	protected void configEventLog(BSTableConfig table, Long userId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void preExecuteAction(BSTableConfig table, String action, Long userId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	protected void postExecuteAction(BSTableConfig table, String action, Long userId) {
 		// TODO Auto-generated method stub
 
 	}
