@@ -128,9 +128,9 @@ begin
 	
 	
 	update tOption SET cContext=NULL WHERE cKey IN('EMPLOYEE','REPORT', 'SECURITY');
-	update tOption SET cContext='TIMECTRL_CONTEXT' WHERE cKey IN('EMPLOYEE_DATA');
+	update tOption SET cContext='TIMECTRL_CONTEXT' WHERE cKey IN('EMPLOYEE_DATA', 'ATTENDANCE');
 	update tOption SET cContext='DALEA_CONTEXT' WHERE cKey IN('LICENSE_CAUSE','ENTERPRISE_DATA','EMPLOYEE_DATA','EMPLOYEE_DETACHED', 'FISCAL_DATE', 'EMPLOYEE_LICENSE', 'EMPLOYEE','EMPLOYEE');
-	update tOption SET cContext='ALBIZIA_CONTEXT' WHERE cKey IN('ATTENDANCE', 'REMUNERATION','PROCESS');
+	update tOption SET cContext='ALBIZIA_CONTEXT' WHERE cKey IN('REMUNERATION','PROCESS');
 	
 	
 #	update tOption SET cUrl='/servlet/albizia/manager/Enterprise' WHERE cKey = 'ENTERPRISE_DATA';
