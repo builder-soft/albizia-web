@@ -3,4 +3,3 @@ Cosas que hay que cambiar en la base de datos:
 que es para almacenar el perfil de la persona. Lo mismo sucede con la tabla "tProfile" y "tPost"
 - Despejar la interrogante de dejar la tabla tCostCenter, tBusinessArea o tArea. Esta última tiene el campo CCosto.
 - 
- 
