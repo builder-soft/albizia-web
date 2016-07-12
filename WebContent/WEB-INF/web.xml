@@ -21,6 +21,7 @@
     <servlet-class>cl.buildersoft.framework.web.servlet.StartupServlet</servlet-class>
     <load-on-startup>3</load-on-startup>
   </servlet>
+  
   <filter>
     <filter-name>RestoreSessionFilter</filter-name>
     <filter-class>cl.buildersoft.framework.web.filter.RestoreSessionFilter</filter-class>

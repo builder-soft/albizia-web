@@ -1,3 +1,4 @@
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="cl.buildersoft.albizia.business.service.impl.AgreementServiceImpl"%>
 <%@page import="cl.buildersoft.albizia.business.service.AgreementService"%>
 <%@page import="cl.buildersoft.framework.util.BSDateTimeUtil"%>
@@ -35,6 +36,7 @@
 <h1 class="cTitle">Información Contractual</h1>
 < % @ include file="/WEB-INF/jsp/config/employee/employee-information.jsp"%>
 < % @ include file="/WEB-INF/jsp/timectrl/common/employee-info.jsp"%>
+<c:import url="/servlet/dalea/web/GetEmployeeInfo" />
 
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/js/config/employee/contractual-info.js">
