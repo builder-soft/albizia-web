@@ -28,16 +28,11 @@ public class ContractTypeManager extends BSHttpServletCRUD {
 
 	@Override
 	public Semaphore setSemaphore(Connection conn, Object[] values) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	protected void configEventLog(BSTableConfig table, Long userId) {
-		// TODO Auto-generated method stub
 
 	}
-
-	
-
 }
